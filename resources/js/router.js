@@ -3,7 +3,7 @@ import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 const routes = [
     {
         path: '/',
-        component: () => import("./components/Index.vue"),
+        component: () => import("./components/Tasks/Index.vue"),
         name: "index",
     },
     {

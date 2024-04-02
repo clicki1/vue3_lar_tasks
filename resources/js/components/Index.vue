@@ -1,5 +1,12 @@
 <template>
-    <router-link to="/create">Create</router-link>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <router-link class="navbar-brand" to="/">Главная страница</router-link>
+                <router-link class="navbar-brand" to="/create">Список задач</router-link>
+            </div>
+        </nav>
+    </div>
     <router-view></router-view>
 </template>
 
@@ -7,7 +14,6 @@
 
 export default {
     name: "Index",
-
 }
 </script>
 

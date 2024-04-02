@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
+use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,7 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return $tasks;
+        return TaskResource::collection($tasks);
     }
 
     /**
@@ -25,11 +27,11 @@ class TasksController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request,)
     {
-        $data = $request->input();
+        $data = $request->validated();
         $task = Task::create($data);
-        return $task;
+        return TaskResource::collection($task);
     }
 
     /**
@@ -50,12 +52,12 @@ class TasksController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
-        $data = $request->input();
+        $data = $request->validated();
         $task->update($data);
         $task->fresh();
-        return $task;
+        return TaskResource::collection($task);
     }
 
     /**
